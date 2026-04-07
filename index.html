@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ประกวดออกแบบเสื้อ C4C 2026</title>
+    <link rel="icon" type="image/x-icon" href="logo512x512-e.ico">
+    <meta name="description"
+        content="ประกวดออกแบบเสื้อยืด C4C 2026 - ชิงรางวัล 500 บาท พร้อมโอกาสได้เสื้อของคุณนำไปใช้ในค่าย">
+    <meta name="keywords" content="C4C, ประกวดออกแบบเสื้อ, ออกแบบเสื้อ, ค่ายคอมพิวเตอร์, Computer for Community">
+    <meta property="og:title" content="ประกวดออกแบบเสื้อ C4C 2026">
+    <meta property="og:description" content="ชิงรางวัล 500 บาท พร้อมโอกาสได้เสื้อของคุณนำไปใช้ในค่าย">
+    <meta property="og:image" content="logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::selection {
+            background-color: #FCA4F0;
+            color: #000;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(8deg);
+            }
+        }
+
+        @keyframes float-slow {
+
+            0%,
+            100% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) translateX(15px) rotate(-5deg);
+            }
+        }
+
+        @keyframes pulse-soft {
+
+            0%,
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.15) rotate(5deg);
+            }
+        }
+
+        .float-shape {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+        .float-1 {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-2 {
+            animation: float-slow 9s ease-in-out infinite;
+        }
+
+        .float-3 {
+            animation: pulse-soft 5s ease-in-out infinite;
+        }
+
+        .neo-shadow {
+            filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 1));
+        }
+
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+
+        #loading-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #loading-logo {
+            animation: pulse-logo 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-logo {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-[#FFDA59] font-sans overflow-x-hidden text-black relative">
+
+
+    <div id="loading-screen">
+        <img id="loading-logo" src="logo.png" alt="Loading" class="w-32 h-32 md:w-48 md:h-48 object-contain">
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                document.getElementById('loading-screen').classList.add('fade-out');
+            }, 800);
+
+            fetch('https://script.googleusercontent.com/macros/echo?user_content_key=AWDtjMWIqs55MIm-hsYEqMKValj-F8aZNIBjdi-Ctkx2qcLmYAS7YP42MSFj2emUk9N8l1OptBpxJuYlZ0EfmojMfFSStipz40jBD1A8B7Zq2JkKvPA2HQVQDfEOhm39KxuZ0rOk6aQ7Tm-QcgRtAV-DqduKOzqJtm9ZElzqbBQNADnYpLUVPx1O1ObAefsfin4cWT2YmaJUFYqor0zmSv-hexbTjF91tsjKx6I_3H8XGHzRw4uKZAzEKpwj-QS7d44rZ1-RT-roijTM3S3EVKB1qkIso9mKlw&lib=MTO88d2I0hl7OyTrL7BbAWQh1UrPZ7Gxm')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('submission-count').textContent = data.total;
+                })
+                .catch(error => {
+                    document.getElementById('submission-count').textContent = '0';
+                });
+
+
+            const deadline = new Date('2026-04-14T23:59:59');
+            const now = new Date();
+            const diffTime = deadline - now;
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('days-left').textContent = diffDays > 0 ? diffDays : 0;
+        });
+    </script>
+
+
+    <section
+        class="relative bg-[#FCA4F0] pt-20 pb-40 px-6 md:px-20 flex flex-col md:flex-row items-center justify-between overflow-hidden">
+
+
+        <div class="absolute inset-0 pointer-events-none opacity-20"
+            style="background-image: radial-gradient(#000 2px, transparent 2px); background-size: 32px 32px;"></div>
+
+
+        <i class="ph-fill ph-star float-shape float-1 text-[#FFDA59] text-6xl top-[10%] left-[5%] neo-shadow"></i>
+        <i class="ph-bold ph-asterisk float-shape float-2 text-[#38bdf8] text-5xl top-[30%] right-[10%] neo-shadow"
+            style="animation-delay: -2s;"></i>
+        <i class="ph-fill ph-desktop float-shape float-3 text-white text-7xl top-[65%] left-[10%] neo-shadow"
+            style="animation-delay: -1s;"></i>
+        <i class="ph-fill ph-heart float-shape float-1 text-[#ef4444] text-5xl top-[75%] right-[20%] neo-shadow"
+            style="animation-delay: -3s;"></i>
+        <i class="ph-fill ph-lightning float-shape float-2 text-[#FFDA59] text-6xl top-[15%] left-[50%] neo-shadow"
+            style="animation-delay: -4s;"></i>
+
+        <div class="md:w-1/2 z-10 relative">
+            <div class="text-white mb-6">
+
+                <h2
+                    class="text-4xl md:text-5xl font-extrabold tracking-tight leading-snug mb-2 ml-1 text-black bg-white inline-block px-4 py-1 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-2">
+                    ประกวดออกแบบเสื้อ
+                </h2>
+                <h1
+                    class="text-7xl md:text-[8rem] font-black tracking-tight leading-tight text-white drop-shadow-[4px_4px_0px_rgba(0,0,0,1)] pb-4 mt-4">
+                    C4C 2026
+                </h1>
+            </div>
+            <h3
+                class="text-2xl md:text-3xl font-black text-[#222] mb-4 bg-[#FFDA59] inline-block px-4 py-2 border-2 border-black rotate-1 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                ชิงเงินรางวัล 500 บาท พร้อมเสื้อผลงานของคุณ!
+            </h3>
+            <p
+                class="text-xl text-[#222] mb-8 font-bold max-w-md leading-relaxed bg-white/60 p-4 rounded-xl border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                เสื้อของคุณจะได้นำไปใช้ในค่าย C4C หรือ โครงการค่ายคอมพิวเตอร์เพื่อชุมชน (Computer
+                for
+                Community)
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <button
+                    class="group flex items-center gap-2 bg-[#FFA22A] text-black border-4 border-black font-black text-xl py-3 px-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:translate-y-[4px] active:translate-x-[4px] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] transition-all">
+                    ส่งผลงานเลย
+                    <i class="ph-bold ph-arrow-right text-2xl group-hover:translate-x-2 transition-transform"></i>
+                </button>
+                <a href="details.html"
+                    class="group flex items-center gap-2 bg-[#38bdf8] text-black border-4 border-black font-black text-xl py-3 px-8 rounded-xl shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] active:translate-y-[4px] active:translate-x-[4px] active:shadow-[0px_0px_0px_0px_rgba(0,0,0,1)] transition-all">
+                    รายละเอียด
+                    <i class="ph-bold ph-info text-2xl group-hover:scale-110 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="md:w-1/2 mt-16 md:mt-0 relative flex justify-center z-10 group cursor-pointer">
+            <video width="400" height="400" autoplay loop muted playsinline
+                class="border-8 border-black rounded-3xl shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] group-hover:-translate-y-4 group-hover:-rotate-3 transition-transform duration-500 bg-white">
+                <source src="3d.mp4" type="video/mp4">
+            </video>
+        </div>
+
+
+        <div class="absolute bottom-[-2px] left-0 w-full overflow-hidden leading-[0] z-20">
+            <svg viewBox="0 0 1440 120" class="w-full h-[60px] md:h-[120px] block" preserveAspectRatio="none">
+                <path
+                    d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
+                    fill="#FFDA59"></path>
+                <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64"
+                    fill="none" stroke="#000000" stroke-width="4"></path>
+            </svg>
+        </div>
+    </section>
+
+
+    <section
+        class="bg-[#FFDA59] py-24 px-6 md:px-20 flex flex-col items-center justify-center relative overflow-hidden">
+
+
+        <div class="absolute inset-0 pointer-events-none opacity-10"
+            style="background-image: radial-gradient(#000 2px, transparent 2px); background-size: 32px 32px;"></div>
+
+
+        <i class="ph-fill ph-trophy float-shape float-2 text-white text-7xl top-[15%] left-[15%] neo-shadow opacity-50"
+            style="animation-delay: -1s;"></i>
+        <i class="ph-bold ph-sparkle float-shape float-3 text-[#FCA4F0] text-5xl bottom-[20%] right-[15%] neo-shadow"
+            style="animation-delay: -2s;"></i>
+
+        <h2 class="text-4xl md:text-5xl font-black text-black mb-12 text-center relative z-10">
+            <span
+                class="bg-white border-4 border-black px-6 py-2 rounded-2xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">ส่งเข้ามาแล้ว</span>
+        </h2>
+
+        <div class="flex flex-wrap justify-center gap-8 relative z-10">
+
+            <div
+                class="flex flex-col items-center justify-center bg-white border-4 border-black p-8 rounded-3xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all min-w-[250px]">
+                <i class="ph-fill ph-paint-brush-broad text-4xl text-[#FCA4F0] mb-2"></i>
+                <span id="submission-count"
+                    class="text-7xl font-black text-[#FCA4F0] drop-shadow-[2px_2px_0_black]">-</span>
+                <span
+                    class="text-xl font-bold mt-2 bg-[#111] text-white px-4 py-1 rounded-full border-2 border-black">ผลงานที่ส่งแล้ว</span>
+            </div>
+
+
+            <div
+                class="flex flex-col items-center justify-center bg-white border-4 border-black p-8 rounded-3xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-2 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all min-w-[250px]">
+                <i class="ph-fill ph-timer text-4xl text-[#4ade80] mb-2"></i>
+                <span id="days-left" class="text-7xl font-black text-[#4ade80] drop-shadow-[2px_2px_0_black]">-</span>
+                <span
+                    class="text-xl font-bold mt-2 bg-[#111] text-white px-4 py-1 rounded-full border-2 border-black">วันที่เหลือ</span>
+            </div>
+        </div>
+
+        <p
+            class="text-center text-xl font-bold mt-12 text-black bg-[#FFA22A] px-6 py-3 border-4 border-black rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] rotate-[-1deg] relative z-10">
+            ร่วมส่งผลงานเพื่อเป็นส่วนหนึ่งของค่าย C4C 2026! 🚀
+        </p>
+    </section>
+
+
+    <section class="bg-[#111111] py-24 px-6 text-center border-t-8 border-[#FCA4F0] relative overflow-hidden">
+
+        <i class="ph-fill ph-code absolute text-[#38bdf8] text-[150px] opacity-10 -left-10 bottom-0 rotate-12"></i>
+        <i
+            class="ph-fill ph-brackets-curly absolute text-[#4ade80] text-[150px] opacity-10 -right-10 top-0 -rotate-12"></i>
+
+        <h2 class="text-4xl md:text-5xl font-black text-white mb-10 relative z-10">
+            พร้อมที่จะเป็นส่วนหนึ่งของค่าย <br class="hidden md:block" />
+            <span
+                class="text-[#FFDA59] inline-block mt-4 px-4 py-2 bg-black border-4 border-[#FFDA59] -rotate-2 hover:rotate-0 transition-transform cursor-default">
+                C4C 2026
+            </span> แล้วหรือยัง?
+        </h2>
+        <button
+            class="relative z-10 bg-[#4ade80] text-black border-4 border-black font-black text-2xl py-4 px-12 rounded-full shadow-[8px_8px_0px_0px_rgba(255,218,89,1)] hover:-translate-y-2 hover:-translate-x-2 hover:shadow-[12px_12px_0px_0px_rgba(255,218,89,1)] active:translate-y-[4px] active:translate-x-[4px] active:shadow-none transition-all">
+            ส่งประกวดด่วน!
+        </button>
+
+        <div class="mt-12 relative z-10">
+            <p class="text-white/70 text-lg mb-4 font-bold">ติดต่อเรา</p>
+            <a href="https://www.facebook.com/c4cmsu2023" target="_blank"
+                class="inline-flex items-center gap-3 bg-[#1877f2] text-white px-6 py-3 rounded-xl border-4 border-black shadow-[4px_4px_0px_0px_rgba(255,255,255,0.3)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.3)] transition-all font-bold">
+                <i class="ph-fill ph-facebook-logo text-2xl"></i>
+                Facebook Page
+            </a>
+        </div>
+    </section>
+
+</body>
+
+</html>
